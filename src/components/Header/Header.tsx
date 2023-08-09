@@ -1,4 +1,3 @@
-import { Switch } from "@blueprintjs/core";
 import { BsSun } from 'react-icons/bs'
 
 import * as SC from "./HeaderStyled"
@@ -16,10 +15,11 @@ const Header: React.FC = (): JSX.Element => {
     }
 
     return (<SC.HeaderStyled>
-        <h3>Where in the world?</h3>
-        <div>
-            <Switch labelElement={theme === "light" ? <BsSun size={20}  /> : <DarkThemeSvg width={20}  />} onChange={toggleTheme}  />
-        </div>
+        <SC.Title>Where in the world?</SC.Title>
+        <SC.SwitchButton type="button">
+            <BsSun size={16} />
+            <SC.SwitchButtonText onClick={toggleTheme}>Light Mode</SC.SwitchButtonText>
+        </SC.SwitchButton>
     </SC.HeaderStyled> );
 }
  

@@ -1,4 +1,5 @@
 const lightTheme: object = {
+  
   space: [
     "0px", //0
     "4px", //1
@@ -8,13 +9,14 @@ const lightTheme: object = {
     "20px", //5
     "24px", //6
     "28px", //7
-    "32px", //8
-    "36px", //9
-    "40px", //10
-    "48px", //11
-    "56px", //12
-    "64px", //13
-    "72px", //14
+    "30px", //8
+    "32px", //9
+    "36px", //10
+    "40px", //11
+    "48px", //12
+    "56px", //13
+    "64px", //14
+    "72px", //15
   ],
 
   percentage: [
@@ -55,7 +57,7 @@ const lightTheme: object = {
 
   weight: {
     bold: "900",
-    semiBold:"600",
+    semiBold: "600",
     normal: "400",
     light: "100",
   },

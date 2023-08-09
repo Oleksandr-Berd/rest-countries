@@ -40,4 +40,11 @@ img{
 button:focus{
   outline: none;
 }
+
+button{
+   font-family: ${(props) => props.theme.fontFamily.body};
+color: ${(props) => props.theme.color.mainText};
+
+
+}
 `;
