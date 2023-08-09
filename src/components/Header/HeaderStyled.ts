@@ -11,6 +11,8 @@ export const HeaderStyled = styled.header`
   padding-right: ${(props) => props.theme.space[6]};
   padding-left: ${(props) => props.theme.space[6]};
 
+  background-color: ${props => props.theme.color.altBg};
+
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
