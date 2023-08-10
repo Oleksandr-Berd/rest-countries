@@ -36,3 +36,8 @@ export interface ICountriesProps {
     isLoading: boolean;
   fetchCountries: (page: number) => void;
 }
+
+export interface ICountryDetails {
+  fetchCountryDetails: (id: string) => void;
+    countryDetails: ICountry | {};
+}

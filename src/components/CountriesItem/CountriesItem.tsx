@@ -1,12 +1,18 @@
 import * as SC from "./CountriesItemStyled"
 
 import { ICountry } from "../../utils/interface";
+import { useNavigate } from "react-router-dom";
 
-const CountriesItem: React.FC<Partial<ICountry>> = ({ name, capital, region, flags, population }): JSX.Element => {
+const CountriesItem: React.FC<Partial<ICountry>> = ({ name, capital, region, flags, population, _id }): JSX.Element => {
+    const navigate = useNavigate()
 
     const formattedPopulation = population.toLocaleString()
 
-    return (<SC.ItemStyled>
+    const handleClickNavigate = () => {
+        navigate(`/${_id}`)
+    }
+
+    return (<SC.ItemStyled onClick={handleClickNavigate}>
         <SC.FlagContainer>
             <SC.Flag src={flags.svg} alt="flag" />
         </SC.FlagContainer>

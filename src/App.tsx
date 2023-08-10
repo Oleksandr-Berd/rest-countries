@@ -7,16 +7,18 @@ import lightTheme from './styles/lightTheme';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import ThemeContext from './context/themeContext';
 import darkTheme from './styles/darkTheme';
-import { getAll } from './utils/services';
+import { getAll, getCountryDetails } from './utils/services';
 import { ICountry } from './utils/interface';
 import { Dna } from 'react-loader-spinner';
 import CountriesList from './components/CountriesList/CountriesList';
+import CountryDetails from './components/CountryDetails/CountryDetails';
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [countriesList, setCountriesList] = useState<ICountry[]>([])
   const [error, setError] = useState(null)
   const [totalPages, setTotalPages] = useState<number>(0)
+  const [countryDetails, setCountryDetails] = useState<ICountry | {}>({})
 
   
 
@@ -25,7 +27,7 @@ function App() {
 
   const commonTheme = theme === "light" ? lightTheme : darkTheme
 
-  const fetchAllCountries = async (page) => {
+  const fetchAllCountries = async (page:number) => {
     setIsLoading(true)
 
     const countries = await getAll(page)
@@ -43,6 +45,15 @@ function App() {
 
   }
 
+  const fetchCountryDetails = async (id:string) => {
+    setIsLoading(true)
+
+    const details = await getCountryDetails(id)
+    if (details.data.message) setError(details.data.message)
+    
+    setCountryDetails(details.data.result)
+    setIsLoading(false)
+  }
   
 
   return (<>
@@ -59,7 +70,8 @@ function App() {
         <GlobalStyles />
         <Routes>
           <Route path='/' element={<SharedLayout />}>
-            <Route index element={<CountriesList countriesList={countriesList} fetchCountries={fetchAllCountries} totalPages={totalPages} isLoading={isLoading} /> } />
+            <Route index element={<CountriesList countriesList={countriesList} fetchCountries={fetchAllCountries} totalPages={totalPages} isLoading={isLoading} />} />
+            <Route path='/:id' element={<CountryDetails fetchCountryDetails={fetchCountryDetails} countryDetails={countryDetails} />}></Route>
           </Route>
         </Routes>
       </ThemeProvider>

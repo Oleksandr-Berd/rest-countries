@@ -55,7 +55,7 @@ const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountrie
             /> : null}
             <SC.ListStyled>
                 {countriesList ? countriesList.map(({ _id, name, capital, population, flags, region }, index, array) => <SC.CountriesItem key={_id}>
-                    <CountriesItem name={name} capital={capital} population={population} flags={flags} region={region} />
+                    <CountriesItem name={name} capital={capital} population={population} flags={flags} region={region} _id={_id} />
                     {index === array.length - 1 && <div key={name} ref={lastItemRef} />}
                 </SC.CountriesItem>
                 ) : null}
