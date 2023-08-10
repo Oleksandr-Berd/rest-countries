@@ -17,14 +17,16 @@ export interface ICountry {
   borders: [];
   nativeName: string;
   numericCode: string;
-  flags: {};
+  flags: {
+    svg: string;
+  };
   currencies: [];
   languages: [];
   translations: {};
   flag: string;
   regionalBlocs: [];
   cioc: string;
-    independent: string;
+  independent: string;
 }
 
 

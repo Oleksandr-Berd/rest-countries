@@ -52,7 +52,7 @@ function App() {
         <GlobalStyles />
         <Routes>
           <Route path='/' element={<SharedLayout />}>
-            <Route path='/all' element={<CountriesList countriesList={countriesList} /> } />
+            <Route index element={<CountriesList countriesList={countriesList} /> } />
           </Route>
         </Routes>
       </ThemeProvider>
