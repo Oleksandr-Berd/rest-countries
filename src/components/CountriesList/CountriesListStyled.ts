@@ -8,3 +8,9 @@ export const ListStyled = styled.ul`
 
   background-color: ${props => props.theme.color.bg};
 `;
+
+export const CountriesItem = styled.div`
+  &:not(:last-child) {
+    margin-bottom: ${(props) => props.theme.space[11]};
+  }
+`;
