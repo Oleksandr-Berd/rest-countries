@@ -31,5 +31,8 @@ export interface ICountry {
 
 
 export interface ICountriesProps {
-    countriesList: ICountry[];
+  countriesList: ICountry[];
+    totalPages: number;
+    isLoading: boolean;
+  fetchCountries: (page: number) => void;
 }

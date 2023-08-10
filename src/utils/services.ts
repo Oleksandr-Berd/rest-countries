@@ -5,12 +5,12 @@ const instance = axios.create({
   baseURL: "http://localhost:5002/api/countries",
 });
 
-export const getAll = async (
+export const getAll = async (page
  
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await instance.get<any>(
-      `/all`
+      `/all?page=${page}`
     );
 
     return response;
