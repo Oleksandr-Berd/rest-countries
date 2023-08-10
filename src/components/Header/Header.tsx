@@ -18,9 +18,6 @@ const {toggle, theme} = useContext(ThemeContext)
         
     }
 
-    console.log(toggle);
-
-
     return (<SC.HeaderStyled>
         <SC.Title>Where in the world?</SC.Title>
         <SC.SwitchButton  onClick={toggleTheme}>
