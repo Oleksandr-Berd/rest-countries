@@ -93,3 +93,20 @@ export const ListItem = styled.li`
     margin-right: ${(props) => props.theme.space[2]};
   }
 `;
+
+export const Neighbor = styled.li`
+  width: 96px;
+
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  text-align: center;
+
+  background-color: ${(props) => props.theme.color.altBg};
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  &:not(:last-child) {
+    margin-right: ${props => props.theme.space[3]};
+  }
+`;

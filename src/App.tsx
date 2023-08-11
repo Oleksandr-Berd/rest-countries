@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 
 import { GlobalStyles } from './styles/GlobalStyles';
 import lightTheme from './styles/lightTheme';
@@ -21,25 +21,26 @@ function App() {
   const [countryDetails, setCountryDetails] = useState<ICountry | {}>({})
   const [neighbors, setNeighbors] = useState<string[] | null>(null)
 
-  
-
-
   const { theme } = useContext(ThemeContext)
 
   const commonTheme = theme === "light" ? lightTheme : darkTheme
 
-  const fetchAllCountries = async (page:number) => {
+  console.log(countriesList);
+
+  const fetchAllCountries = async (page:number, query:string | null) => {
     setIsLoading(true)
 
-    const countries = await getAll(page)
+    const countries = await getAll(page, query)
 
     if (countries.data.message) setError(countries.data.message)
+    console.log(query);
 
 
-    if (countriesList.length === 0) {
+    if (countriesList.length === 0 || query) {
       setCountriesList(countries.data.result)
-    } else {
-      setCountriesList(prev => [...prev, ...countries.data.result ])
+    } 
+    else {
+      setCountriesList(prev => [...prev, ...countries.data.result])
     }
 
 
@@ -58,8 +59,7 @@ function App() {
     setNeighbors(details.data.neighbors)
 
     setIsLoading(false)
-  }
-  
+  }  
 
   return (<>
     {error ? <h1>{error} </h1> : <div className="App">

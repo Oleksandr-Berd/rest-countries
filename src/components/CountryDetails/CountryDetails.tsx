@@ -12,7 +12,7 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
 
     const { pathname } = location
     
-    const { flags, name, nativeName, population, subregion, region, capital, topLevelDomain, currencies, languages, borders, timezones } = Object.keys(countryDetails).length > 0 && countryDetails as ICountry 
+    const { flags, name, nativeName, population, subregion, region, capital, topLevelDomain, currencies, languages, timezones } = Object.keys(countryDetails).length > 0 && countryDetails as ICountry 
 
     const formattedPopulation = population ? population.toLocaleString() : ""
 
@@ -27,10 +27,7 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
 
     const navigateBack = () => {
     navigate("/")
-}
-
-    console.log(neighbors);
-    
+}    
     
     return (<>
     {
@@ -67,7 +64,7 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
                         <>
                             <SC.SubTitle>Border countries:</SC.SubTitle>
                             <SC.ContentList>
-                                {neighbors.map(el => <li key={el}>{el}</li>)}
+                                {neighbors.map(el => <SC.Neighbor key={el}>{el}</SC.Neighbor>)}
                             </SC.ContentList>
                         </>
                     : null}
