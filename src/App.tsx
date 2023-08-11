@@ -19,6 +19,7 @@ function App() {
   const [error, setError] = useState(null)
   const [totalPages, setTotalPages] = useState<number>(0)
   const [countryDetails, setCountryDetails] = useState<ICountry | {}>({})
+  const [neighbors, setNeighbors] = useState<string[] | null>(null)
 
   
 
@@ -40,6 +41,8 @@ function App() {
     } else {
       setCountriesList(prev => [...prev, ...countries.data.result ])
     }
+
+
     setTotalPages(countries.data.totalPages)
     setIsLoading(false)
 
@@ -52,6 +55,8 @@ function App() {
     if (details.data.message) setError(details.data.message)
     
     setCountryDetails(details.data.result)
+    setNeighbors(details.data.neighbors)
+
     setIsLoading(false)
   }
   
@@ -71,7 +76,7 @@ function App() {
         <Routes>
           <Route path='/' element={<SharedLayout />}>
             <Route index element={<CountriesList countriesList={countriesList} fetchCountries={fetchAllCountries} totalPages={totalPages} isLoading={isLoading} />} />
-            <Route path='/:id' element={<CountryDetails fetchCountryDetails={fetchCountryDetails} countryDetails={countryDetails} />}></Route>
+            <Route path='/:id' element={<CountryDetails fetchCountryDetails={fetchCountryDetails} countryDetails={countryDetails} neighbors={neighbors} />}></Route>
           </Route>
         </Routes>
       </ThemeProvider>

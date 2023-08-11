@@ -83,3 +83,13 @@ display: flex;
 flex-direction: row;
 align-items: center;
 `
+
+export const ListItem = styled.li`
+  font-size: ${(props) => props.theme.size.S};
+  font-weight: ${(props) => props.theme.weight.light};
+  line-height: 2.29;
+
+  &:not(:last-child) {
+    margin-right: ${(props) => props.theme.space[2]};
+  }
+`;

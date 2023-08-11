@@ -6,7 +6,7 @@ import * as SC from "./CountryDetailsStyled"
 import {ReactComponent as ArrowSvg} from "../../assets/icons/call-made.svg"
 import { ICountry, ICountryDetails } from "../../utils/interface";
 
-const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countryDetails }): JSX.Element => {
+const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countryDetails, neighbors }): JSX.Element => {
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -29,6 +29,9 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
     navigate("/")
 }
 
+    console.log(neighbors);
+    
+    
     return (<>
     {
             Object.keys(countryDetails).length > 0 ? 
@@ -52,14 +55,25 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
                     <SC.ContentContainer>
                         <SC.ContentTitle>Top Level Domain: {topLevelDomain.map(el => <SC.Content key={el}>{el}</SC.Content>)}</SC.ContentTitle>
                         <SC.ContentTitle>Time Zone: </SC.ContentTitle>
-                        {typeof timezones === "object" ? <SC.ContentList>{timezones.map(el => <li key={el}>{el}</li>)}</SC.ContentList> : <SC.Content>{timezones}</SC.Content>}
+                        {typeof timezones === "object" ? <SC.ContentList>{timezones.map(el => <SC.ListItem key={el}>{el}</SC.ListItem>)}</SC.ContentList> : <SC.Content>{timezones}</SC.Content>}
                         <SC.ContentTitle>Currencies: <SC.Content>{currenciesName} ({currenciesCode})</SC.Content></SC.ContentTitle>
-                        <SC.ContentTitle>Languages: {languages.map(({ name, nativeName }) => <SC.Content key={nativeName}>{name} ({nativeName})</SC.Content>)}</SC.ContentTitle>
+                        
+                        <SC.ContentTitle>Languages: </SC.ContentTitle>
+                        <SC.ContentList>
+                            {languages.map(({ name, nativeName }) => <SC.ListItem key={nativeName}>{name} ({nativeName})</SC.ListItem>)}
+                        </SC.ContentList>
                     </SC.ContentContainer>
-                    <SC.SubTitle>Border countries:</SC.SubTitle>
-                    <SC.ContentList>
-                        {borders.map(el => <li key={el}>{el}</li>)}
-                    </SC.ContentList>
+                    {neighbors && neighbors.length > 0 ?
+                        <>
+                            <SC.SubTitle>Border countries:</SC.SubTitle>
+                            <SC.ContentList>
+                                {neighbors.map(el => <li key={el}>{el}</li>)}
+                            </SC.ContentList>
+                        </>
+                    : null}
+                    
+                    
+                   
                 </SC.DetailsContainer> :
                 <Dna
                     visible={true}

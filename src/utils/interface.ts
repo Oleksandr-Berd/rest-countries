@@ -39,5 +39,6 @@ export interface ICountriesProps {
 
 export interface ICountryDetails {
   fetchCountryDetails: (id: string) => void;
-    countryDetails: ICountry | {};
+  countryDetails: ICountry | {};
+  neighbors: string[];
 }
