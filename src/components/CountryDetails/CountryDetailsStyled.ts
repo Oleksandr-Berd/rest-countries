@@ -40,6 +40,46 @@ border-radius: 2px;
   }
 `;
 
+export const FlagContainer = styled.div`
+margin-bottom: 44px;
+`
+
 export const Flag = styled.img`
 width: ${props => props.theme.percentage[10]};
+`
+
+export const CountryName = styled.h3`
+margin-bottom: ${props => props.theme.space[4]};
+
+font-size: 22px;
+font-weight: ${props => props.theme.weight.bold};
+line-height: auto;
+`
+
+export const ContentContainer = styled.div`
+margin-bottom: ${props => props.theme.space[8]};
+`
+
+export const ContentTitle = styled.p`
+font-size: ${props => props.theme.size.S};
+font-weight: ${props => props.theme.weight.semiBold};
+line-height: 2.29;
+`
+
+export const Content = styled.span`
+  font-weight: ${(props) => props.theme.weight.light};
+`;
+
+export const SubTitle = styled.h4`
+margin-bottom: ${props => props.theme.space[4]};
+
+  font-size: ${props => props.theme.size.N};
+  font-weight: ${(props) => props.theme.weight.bold};
+  line-height: 1.5;
+`;
+
+export const ContentList = styled.ul`
+display: flex;
+flex-direction: row;
+align-items: center;
 `

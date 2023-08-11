@@ -35,31 +35,31 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
                 <SC.DetailsContainer>
                     <SC.BackButton onClick={navigateBack}>
                         <ArrowSvg />
-                        <span>Back</span>
+                        <SC.Content>Back</SC.Content>
                         </SC.BackButton>
-                    <div>
+                    <SC.FlagContainer>
                         <SC.Flag src={flags.svg} alt="flag" />
-                    </div>
+                    </SC.FlagContainer>
                     
-                    <h3>{name}</h3>
-                    <div>
-                        <p>Native name: <span>{nativeName}</span></p>
-                        <p>Population: <span>{formattedPopulation}</span></p>
-                        <p>Region:  <span>{region}</span></p>
-                        <p>Sub Region:  <span>{subregion}</span></p>
-                        <p>Capital:  <span>{capital}</span></p>
-                    </div>
-                    <div>
-                        <p>Top Level Domain: {topLevelDomain.map(el => <span key={el}>{el}</span>)}</p>
-                        <p>Time Zone: </p>
-                        {typeof timezones === "object" ? <ul>{timezones.map(el => <span key={el}>{el}</span>)}</ul> : <span>{timezones}</span>}
-                        <p>Currencies: <span>{currenciesName} ({currenciesCode})</span></p>
-                        <p>Languages: {languages.map(({ name, nativeName }) => <span key={nativeName}>{name} ({nativeName})</span>)}</p>
-                    </div>
-                    <h4>Border countries:</h4>
-                    <ul>
+                    <SC.CountryName>{name}</SC.CountryName>
+                    <SC.ContentContainer>
+                        <SC.ContentTitle>Native name: <SC.Content>{nativeName}</SC.Content></SC.ContentTitle>
+                        <SC.ContentTitle>Population: <SC.Content>{formattedPopulation}</SC.Content></SC.ContentTitle>
+                        <SC.ContentTitle>Region:  <SC.Content>{region}</SC.Content></SC.ContentTitle>
+                        <SC.ContentTitle>Sub Region:  <SC.Content>{subregion}</SC.Content></SC.ContentTitle>
+                        <SC.ContentTitle>Capital:  <SC.Content>{capital}</SC.Content></SC.ContentTitle>
+                    </SC.ContentContainer>
+                    <SC.ContentContainer>
+                        <SC.ContentTitle>Top Level Domain: {topLevelDomain.map(el => <SC.Content key={el}>{el}</SC.Content>)}</SC.ContentTitle>
+                        <SC.ContentTitle>Time Zone: </SC.ContentTitle>
+                        {typeof timezones === "object" ? <SC.ContentList>{timezones.map(el => <li key={el}>{el}</li>)}</SC.ContentList> : <SC.Content>{timezones}</SC.Content>}
+                        <SC.ContentTitle>Currencies: <SC.Content>{currenciesName} ({currenciesCode})</SC.Content></SC.ContentTitle>
+                        <SC.ContentTitle>Languages: {languages.map(({ name, nativeName }) => <SC.Content key={nativeName}>{name} ({nativeName})</SC.Content>)}</SC.ContentTitle>
+                    </SC.ContentContainer>
+                    <SC.SubTitle>Border countries:</SC.SubTitle>
+                    <SC.ContentList>
                         {borders.map(el => <li key={el}>{el}</li>)}
-                    </ul>
+                    </SC.ContentList>
                 </SC.DetailsContainer> :
                 <Dna
                     visible={true}
