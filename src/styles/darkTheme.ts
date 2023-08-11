@@ -14,8 +14,9 @@ const darkTheme: object = {
     "40px", //11
     "48px", //12
     "56px", //13
-    "64px", //14
-    "72px", //15
+    "60px", //14
+    "64px", //15
+    "72px", //16
   ],
 
   percentage: [

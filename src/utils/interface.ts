@@ -20,7 +20,7 @@ export interface ICountry {
   flags: {
     svg: string;
   };
-  currencies: [];
+  currencies: [{name: string, code: string}];
   languages: [];
   translations: {};
   flag: string;
