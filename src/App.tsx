@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Route, Routes, useSearchParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { GlobalStyles } from './styles/GlobalStyles';
 import lightTheme from './styles/lightTheme';
@@ -16,6 +16,9 @@ import CountryDetails from './components/CountryDetails/CountryDetails';
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [countriesList, setCountriesList] = useState<ICountry[]>([])
+  const [prevQuery, setPrevQuery] = useState<string | null>(null)
+  const [prevFilterRegion, setPrevFilterRegion] = useState<string>("all")
+
   const [error, setError] = useState(null)
   const [totalPages, setTotalPages] = useState<number>(0)
   const [countryDetails, setCountryDetails] = useState<ICountry | {}>({})
@@ -24,30 +27,31 @@ function App() {
   const { theme } = useContext(ThemeContext)
 
   const commonTheme = theme === "light" ? lightTheme : darkTheme
-
-  console.log(countriesList);
-
-  const fetchAllCountries = async (page:number, query:string | null) => {
-    setIsLoading(true)
-
-    const countries = await getAll(page, query)
-
-    if (countries.data.message) setError(countries.data.message)
+  const fetchAllCountries = async (page: number, filterRegion: string, query: string | null) => {
+    setIsLoading(true);
     console.log(query);
 
+    const countries = await getAll(page, filterRegion, query);
 
-    if (countriesList.length === 0 || query) {
-      setCountriesList(countries.data.result)
-    } 
-    else {
-      setCountriesList(prev => [...prev, ...countries.data.result])
+    if (countries.data.message) setError(countries.data.message)
+    if (countries.data.result.length ===0) setError("Oops, there is no any Country")
+
+    if (filterRegion !== prevFilterRegion || query !== prevQuery) {
+      setCountriesList(countries.data.result);
+    } else if (countriesList.length === 0) {
+      setCountriesList(countries.data.result);
+    } else {
+      setCountriesList((prev) => [...prev, ...countries.data.result]);
     }
 
 
-    setTotalPages(countries.data.totalPages)
-    setIsLoading(false)
 
-  }
+    setPrevFilterRegion(filterRegion);
+    setPrevQuery(query);
+
+    setTotalPages(countries.data.totalPages);
+    setIsLoading(false);
+  };
 
   const fetchCountryDetails = async (id:string) => {
     setIsLoading(true)
@@ -60,6 +64,9 @@ function App() {
 
     setIsLoading(false)
   }  
+
+console.log(countriesList);
+
 
   return (<>
     {error ? <h1>{error} </h1> : <div className="App">

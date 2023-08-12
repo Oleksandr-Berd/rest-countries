@@ -5,13 +5,19 @@ const instance = axios.create({
   baseURL: "http://localhost:5002/api/countries",
 });
 
-export const getAll = async (page:number, query:string | null): Promise<AxiosResponse<any>> => {
-  try {
-    const response = query
-      ? await instance.get<any>(`/all?page=${page}&searchQuery=${query}`)
-      : await instance.get<any>(`/all?page=${page}`);
-
+export const getAll = async (
+  page: number,
+  filterRegion: string,
+  query: string | null
+): Promise<AxiosResponse<any>> => {
+    try {
       
+    const response = query
+      ? await instance.get<any>(
+          `/all?page=${page}&searchQuery=${query}&region=${filterRegion}`
+        )
+      : await instance.get<any>(`/all?page=${page}&region=${filterRegion}`);
+
     return response;
   } catch (error: any) {
     return error.response;

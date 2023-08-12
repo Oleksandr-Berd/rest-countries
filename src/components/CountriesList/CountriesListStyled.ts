@@ -35,6 +35,10 @@ export const SearchInput = styled.input`
 
 export const SearchLabel = styled.label`
   position: relative;
+
+  display:block;
+
+  margin-bottom: ${props => props.theme.space[11]};
 `;
 
 export const SearchIcon = styled.img`
@@ -44,7 +48,7 @@ export const SearchIcon = styled.img`
 
   z-index: 10;
 
-  transform: translateX(32px) translateY(4px);
+  transform: translateX(32px) translateY(18px);
 `;
 
 

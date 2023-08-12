@@ -32,9 +32,13 @@ export interface ICountry {
 
 export interface ICountriesProps {
   countriesList: ICountry[];
-    totalPages: number;
-    isLoading: boolean;
-    fetchCountries: (page: number, query?:string) => void;
+  totalPages: number;
+  isLoading: boolean;
+  fetchCountries: (
+    page: number,
+    filterRegion:string,
+    query?: string
+  ) => void;
 }
 
 export interface ICountryDetails {
