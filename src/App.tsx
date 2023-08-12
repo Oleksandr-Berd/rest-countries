@@ -12,6 +12,7 @@ import { ICountry } from './utils/interface';
 import { Dna } from 'react-loader-spinner';
 import CountriesList from './components/CountriesList/CountriesList';
 import CountryDetails from './components/CountryDetails/CountryDetails';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -65,7 +66,11 @@ function App() {
   }  
 
   return (<>
-    {error ? <h1>{error} </h1> : <div className="App">
+     
+    {error ? <ThemeProvider theme={commonTheme}>  <GlobalStyles />
+    <ErrorPage errors={error}/> 
+      </ThemeProvider>
+    : <div className="App">
       {isLoading ? <Dna
         visible={true}
         height="80"
@@ -85,8 +90,7 @@ function App() {
       </ThemeProvider>
 
     </div>}
-    
-  </>
+    </>
   );
 }
 

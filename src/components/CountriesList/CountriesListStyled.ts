@@ -67,10 +67,18 @@ export const CountriesItem = styled.div`
 
 //Dropdown
 
+export const DropdownStyled = styled(Dropdown)`
+  width: ${(props) => props.theme.percentage[7]};
+`;
+
 export const DropdownToggleStyled = styled(Dropdown.Toggle)`
+  width: ${(props) => props.theme.percentage[10]};
+
   padding-left: ${(props) => props.theme.space[6]};
   padding-top: 14px;
   padding-bottom: 14px;
+
+  margin-bottom: ${(props) => props.theme.space[1]};
 
   background-color: ${(props) => props.theme.color.altBg};
   color: ${(props) => props.theme.color.mainText};
@@ -87,8 +95,25 @@ export const DropdownToggleStyled = styled(Dropdown.Toggle)`
     color: ${(props) => props.theme.color.mainText};
   }
 
-  &::after{
-    margin-left: ${props => props.theme.space[15]};
-    margin-right: ${props => props.theme.space[5]};
+  &::after {
+    margin-left: ${(props) => props.theme.space[15]};
   }
+`;
+
+export const DropdownMenuStyled = styled(Dropdown.Menu)`
+  width: ${(props) => props.theme.percentage[10]};
+
+  padding-top: ${(props) => props.theme.space[4]};
+  padding-bottom: ${(props) => props.theme.space[4]};
+  padding-left: ${(props) => props.theme.space[6]};
+`;
+
+export const DropdownItemStyled = styled(Dropdown.Item)`
+font-family: ${props => props.theme.fontFamily.body};
+font-size: ${props => props.theme.size.XS};
+line-height: 1.33;
+
+&:not(:last-child){
+    margin-bottom: ${props => props.theme.space[2]};
+}
 `;

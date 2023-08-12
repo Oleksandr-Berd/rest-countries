@@ -88,15 +88,15 @@ const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountrie
                         <SC.SearchIcon src={searchIcon} alt="searchIcon" />
                         <SC.SearchInput onChange={handleSearch} type="text" placeholder="Search for a country…" />
                     </SC.SearchLabel>
-                    <Dropdown onSelect={handleFilterRegion}>
+                    <SC.DropdownStyled onSelect={handleFilterRegion}>
                         <SC.DropdownToggleStyled variant="success" id="dropdown-basic">
                             Filter By Region
                         </SC.DropdownToggleStyled>
 
-                        <Dropdown.Menu>
-                            {regions.map(({ id, region }) => <Dropdown.Item key={id} eventKey={region}>{region}</Dropdown.Item>)}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        <SC.DropdownMenuStyled>
+                            {regions.map(({ id, region }) => <SC.DropdownItemStyled key={id} eventKey={region}>{region}</SC.DropdownItemStyled>)}
+                        </SC.DropdownMenuStyled>
+                    </SC.DropdownStyled>
                 </SC.SearchForm>
                 <SC.ListStyled>
                     {countriesList ? countriesList.map(({ _id, name, capital, population, flags, region }, index, array) => <SC.CountriesItem key={_id}>

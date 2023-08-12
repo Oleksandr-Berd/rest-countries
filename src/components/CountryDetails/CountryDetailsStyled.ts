@@ -79,9 +79,9 @@ margin-bottom: ${props => props.theme.space[4]};
 `;
 
 export const ContentList = styled.ul`
-display: flex;
-flex-direction: row;
-align-items: center;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: ${props => props.theme.space[2]};
 `
 
 export const ListItem = styled.li`
@@ -95,10 +95,14 @@ export const ListItem = styled.li`
 `;
 
 export const Neighbor = styled.li`
-  width: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   padding-top: 6px;
   padding-bottom: 6px;
+  padding-right: ${(props) => props.theme.space[1]};
+  padding-left: ${(props) => props.theme.space[1]};
 
   text-align: center;
 
@@ -107,6 +111,7 @@ export const Neighbor = styled.li`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
   &:not(:last-child) {
-    margin-right: ${props => props.theme.space[3]};
+    margin-right: ${(props) => props.theme.space[3]};
   }
 `;
+

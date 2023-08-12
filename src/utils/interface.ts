@@ -46,3 +46,7 @@ export interface ICountryDetails {
   countryDetails: ICountry | {};
   neighbors: string[];
 }
+
+export interface IPropsInterface {
+    errors:string
+}
