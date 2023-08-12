@@ -29,7 +29,6 @@ function App() {
   const commonTheme = theme === "light" ? lightTheme : darkTheme
   const fetchAllCountries = async (page: number, filterRegion: string, query: string | null) => {
     setIsLoading(true);
-    console.log(query);
 
     const countries = await getAll(page, filterRegion, query);
 
@@ -64,9 +63,6 @@ function App() {
 
     setIsLoading(false)
   }  
-
-console.log(countriesList);
-
 
   return (<>
     {error ? <h1>{error} </h1> : <div className="App">

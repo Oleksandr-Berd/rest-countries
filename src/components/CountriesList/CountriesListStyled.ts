@@ -1,3 +1,4 @@
+import { Dropdown } from "react-bootstrap";
 import styled from "styled-components"
 
 export const CommonContainer = styled.div`
@@ -61,5 +62,33 @@ export const ListStyled = styled.ul`
 export const CountriesItem = styled.div`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[11]};
+  }
+`;
+
+//Dropdown
+
+export const DropdownToggleStyled = styled(Dropdown.Toggle)`
+  padding-left: ${(props) => props.theme.space[6]};
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  background-color: ${(props) => props.theme.color.altBg};
+  color: ${(props) => props.theme.color.mainText};
+
+  font-size: ${(props) => props.theme.size.XS};
+  line-height: 1.67;
+
+  border: none;
+
+  &&&:hover,
+  &&&:focus,
+  &&&:active {
+    background-color: ${(props) => props.theme.color.altBg};
+    color: ${(props) => props.theme.color.mainText};
+  }
+
+  &::after{
+    margin-left: ${props => props.theme.space[15]};
+    margin-right: ${props => props.theme.space[5]};
   }
 `;

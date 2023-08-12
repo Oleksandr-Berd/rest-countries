@@ -89,9 +89,9 @@ const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountrie
                         <SC.SearchInput onChange={handleSearch} type="text" placeholder="Search for a country…" />
                     </SC.SearchLabel>
                     <Dropdown onSelect={handleFilterRegion}>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <SC.DropdownToggleStyled variant="success" id="dropdown-basic">
                             Filter By Region
-                        </Dropdown.Toggle>
+                        </SC.DropdownToggleStyled>
 
                         <Dropdown.Menu>
                             {regions.map(({ id, region }) => <Dropdown.Item key={id} eventKey={region}>{region}</Dropdown.Item>)}
