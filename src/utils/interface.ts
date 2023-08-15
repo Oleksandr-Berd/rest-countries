@@ -1,4 +1,5 @@
 export interface ICountry {
+    location?:object;
   _id: string;
   name: string;
   topLevelDomain: [];
@@ -20,7 +21,7 @@ export interface ICountry {
   flags: {
     svg: string;
   };
-  currencies: [];
+  currencies: [{name: string, code: string}];
   languages: [];
   translations: {};
   flag: string;
@@ -32,7 +33,21 @@ export interface ICountry {
 
 export interface ICountriesProps {
   countriesList: ICountry[];
-    totalPages: number;
-    isLoading: boolean;
-  fetchCountries: (page: number) => void;
+  totalPages: number;
+  isLoading: boolean;
+  fetchCountries: (
+    page: number,
+    filterRegion:string,
+    query?: string
+  ) => void;
+}
+
+export interface ICountryDetails {
+  fetchCountryDetails: (id: string) => void;
+  countryDetails: ICountry | {};
+  neighbors: string[];
+}
+
+export interface IPropsInterface {
+    errors:string
 }

@@ -10,6 +10,12 @@ export const ItemStyled = styled.li`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[11]};
   }
+
+  @media (min-width: 1440px){
+    height: 336px;
+
+    cursor: pointer;
+  }
 `;
 
 export const Flag = styled.img`
@@ -17,11 +23,21 @@ export const Flag = styled.img`
 
   border-top-left-radius: ${(props) => props.theme.radius[5]};
   border-top-right-radius: ${(props) => props.theme.radius[5]};
+
+  @media (min-width: 1440px) {
+
+    height: ${(props) => props.theme.percentage[10]};
+  }
 `;
 
 export const FlagContainer = styled.div`
-margin-bottom: ${props => props.theme.space[6]};
-`
+  margin-bottom: ${(props) => props.theme.space[6]};
+
+  @media (min-width: 1440px) {
+
+    height: 160px;
+  }
+`;
 
 export const ContentContainer = styled.div`
 padding-left: ${props => props.theme.space[6]};

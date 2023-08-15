@@ -14,8 +14,9 @@ const darkTheme: object = {
     "40px", //11
     "48px", //12
     "56px", //13
-    "64px", //14
-    "72px", //15
+    "60px", //14
+    "64px", //15
+    "72px", //16
   ],
 
   percentage: [
@@ -73,7 +74,7 @@ const darkTheme: object = {
     page: "#F2F2F2",
     errors: "#F43030",
     text: "#EAEAEB",
-    cyan: "#5FB4A2",
+    altHover: "#5FB4A2",
     dark: "#203A4C",
     border: "#979797",
     secondaryBody: "#ffffff",
