@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
   baseURL: "https://common-server-ldx7.onrender.com/api/countries",
+//   baseURL: "http://localhost:5002/api/countries",
 });
 
 export const getAll = async (
@@ -23,9 +24,9 @@ export const getAll = async (
   }
 };
 
-export const getCountryDetails = async (id:string): Promise<AxiosResponse<any>> => {
+export const getCountryDetails = async (name:string): Promise<AxiosResponse<any>> => {
     try {
-        const response = await instance.get<any>(`/all${id}`);
+        const response = await instance.get<any>(`/all${name}`);
 
         return response;
     } catch (error) {

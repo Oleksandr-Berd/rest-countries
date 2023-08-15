@@ -43,6 +43,9 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
     navigate("/")
 }    
     
+console.log(neighbors);
+
+
     return (
       <>
         {Object.keys(countryDetails).length > 0 ? (
@@ -117,7 +120,12 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
                         <SC.SubTitle>Border countries:</SC.SubTitle>
                         <SC.ContentList>
                           {neighbors.map((el) => (
-                            <SC.Neighbor key={el}>{el}</SC.Neighbor>
+                            <SC.Neighbor
+                              onClick={() => navigate(`/${el}`)}
+                              key={el}
+                            >
+                              {el}
+                            </SC.Neighbor>
                           ))}
                         </SC.ContentList>
                       </>
@@ -191,7 +199,12 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
                     <SC.SubTitle>Border countries:</SC.SubTitle>
                     <SC.ContentList>
                       {neighbors.map((el) => (
-                        <SC.Neighbor key={el}>{el}</SC.Neighbor>
+                        <SC.Neighbor
+                          onClick={() => navigate(`/${el}`)}
+                          key={el}
+                        >
+                          {el}
+                        </SC.Neighbor>
                       ))}
                     </SC.ContentList>
                   </>

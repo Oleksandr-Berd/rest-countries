@@ -54,17 +54,17 @@ function App() {
     setIsLoading(false);
   };
 
-  const fetchCountryDetails = async (id:string) => {
-    setIsLoading(true)
+  const fetchCountryDetails = async (name: string) => {
+    setIsLoading(true);
 
-    const details = await getCountryDetails(id)
-    if (details.data.message) setError(details.data.message)
-    
-    setCountryDetails(details.data.result)
-    setNeighbors(details.data.neighbors)
-setCountriesList([])
-    setIsLoading(false)
-  }    
+    const details = await getCountryDetails(name);
+    if (details.data.message) setError(details.data.message);
+
+    setCountryDetails(details.data.result);
+    setNeighbors(details.data.neighbors);
+    setCountriesList([]);
+    setIsLoading(false);
+  };    
 
   return (<>
      

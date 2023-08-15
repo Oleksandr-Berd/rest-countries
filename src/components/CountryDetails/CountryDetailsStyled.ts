@@ -152,8 +152,17 @@ export const Neighbor = styled.li`
 
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
+  transition: background-color 0.3s ease-in-out;
+
   &:not(:last-child) {
     margin-right: ${(props) => props.theme.space[3]};
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.color.hover};
+    cursor: pointer;
+
+    transition: background-color 0.3s ease-in-out;
   }
 `;
 

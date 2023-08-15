@@ -3,13 +3,13 @@ import * as SC from "./CountriesItemStyled"
 import { ICountry } from "../../utils/interface";
 import { useNavigate } from "react-router-dom";
 
-const CountriesItem: React.FC<Partial<ICountry>> = ({ name, capital, region, flags, population, _id, location }): JSX.Element => {
+const CountriesItem: React.FC<Partial<ICountry>> = ({ name, capital, region, flags, population }): JSX.Element => {
     const navigate = useNavigate()
 
     const formattedPopulation = population.toLocaleString()
 
     const handleClickNavigate = () => {
-       navigate(`/${_id}`, { state: { from: location } });
+       navigate(`/${name}`);
        
     }
 
