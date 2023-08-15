@@ -25,7 +25,6 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
       currencies,
       languages,
       timezones,
-      latlng,
     } = Object.keys(countryDetails).length > 0 && (countryDetails as ICountry); 
 
     const formattedPopulation = population ? population.toLocaleString() : ""
