@@ -7,6 +7,7 @@ import { ICountriesProps } from "../../utils/interface";
 import CountriesItem from "../CountriesItem/CountriesItem";
 import searchIcon from "../../assets/icons/Shape.png"
 import regions from "../../data/regions.json"
+import { useLocation } from "react-router-dom";
 
 
 const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountries, totalPages, isLoading }): JSX.Element => {
@@ -16,6 +17,8 @@ const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountrie
 
     const observer = useRef(null);
     const lastItemRef = useRef(null);
+
+    const location = useLocation()
 
     const handleSearch = (evt: ChangeEvent<HTMLInputElement>) => {
 
@@ -67,46 +70,72 @@ const CountriesList: React.FC<ICountriesProps> = ({ countriesList, fetchCountrie
                 observer.current.disconnect();
             }
         };
-    }, [currentPage, totalPages, isLoading]);
-    
+    }, [currentPage, totalPages, isLoading]);    
 
     return (
-        <>
-            {isLoading ? <Dna
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
-            /> : null}
-            <SC.CommonContainer>
-                <SC.SearchForm>
+      <>
+        {isLoading ? (
+          <Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        ) : null}
+        <SC.CommonContainer>
+          <SC.SearchForm>
+            <SC.SearchLabel>
+              <SC.SearchIcon src={searchIcon} alt="searchIcon" />
+              <SC.SearchInput
+                onChange={handleSearch}
+                type="text"
+                placeholder="Search for a country…"
+              />
+            </SC.SearchLabel>
+            <SC.DropdownStyled onSelect={handleFilterRegion}>
+              <SC.DropdownToggleStyled variant="success" id="dropdown-basic">
+                Filter By Region
+              </SC.DropdownToggleStyled>
 
-                    <SC.SearchLabel>
-                        <SC.SearchIcon src={searchIcon} alt="searchIcon" />
-                        <SC.SearchInput onChange={handleSearch} type="text" placeholder="Search for a country…" />
-                    </SC.SearchLabel>
-                    <SC.DropdownStyled onSelect={handleFilterRegion}>
-                        <SC.DropdownToggleStyled variant="success" id="dropdown-basic">
-                            Filter By Region
-                        </SC.DropdownToggleStyled>
-
-                        <SC.DropdownMenuStyled>
-                            {regions.map(({ id, region }) => <SC.DropdownItemStyled key={id} eventKey={region}>{region}</SC.DropdownItemStyled>)}
-                        </SC.DropdownMenuStyled>
-                    </SC.DropdownStyled>
-                </SC.SearchForm>
-                <SC.ListStyled>
-                    {countriesList ? countriesList.map(({ _id, name, capital, population, flags, region }, index, array) => <SC.CountriesItem key={_id}>
-                        <CountriesItem name={name} capital={capital} population={population} flags={flags} region={region} _id={_id} />
-                        {index === array.length - 1 && <div key={name} ref={lastItemRef} />}
+              <SC.DropdownMenuStyled>
+                {regions.map(({ id, region }) => (
+                  <SC.DropdownItemStyled key={id} eventKey={region}>
+                    {region}
+                  </SC.DropdownItemStyled>
+                ))}
+              </SC.DropdownMenuStyled>
+            </SC.DropdownStyled>
+          </SC.SearchForm>
+          <SC.ListStyled>
+            {countriesList
+              ? countriesList.map(
+                  (
+                    { _id, name, capital, population, flags, region },
+                    index,
+                    array
+                  ) => (
+                    <SC.CountriesItem key={_id}>
+                      <CountriesItem
+                        name={name}
+                        capital={capital}
+                        population={population}
+                        flags={flags}
+                        region={region}
+                        _id={_id}
+                        location={location}
+                      />
+                      {index === array.length - 1 && (
+                        <div key={name} ref={lastItemRef} />
+                      )}
                     </SC.CountriesItem>
-                    ) : null}
-
-                </SC.ListStyled>
-            </SC.CommonContainer>
-        </>
+                  )
+                )
+              : null}
+          </SC.ListStyled>
+        </SC.CommonContainer>
+      </>
     );
 }
 

@@ -10,7 +10,6 @@ export const DetailsContainer = styled.div`
   background-color: ${(props) => props.theme.color.bg};
 
   @media (min-width: 1440px){
-height: 100vh;
 
     padding-top: 80px;
     padding-left: 80px;

@@ -1,4 +1,5 @@
 export interface ICountry {
+    location?:object;
   _id: string;
   name: string;
   topLevelDomain: [];

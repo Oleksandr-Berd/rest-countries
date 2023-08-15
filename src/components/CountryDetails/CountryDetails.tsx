@@ -6,7 +6,6 @@ import { useMediaQuery } from "usehooks-ts";
 import * as SC from "./CountryDetailsStyled"
 import {ReactComponent as ArrowSvg} from "../../assets/icons/call-made.svg"
 import { ICountry, ICountryDetails } from "../../utils/interface";
-import { DesktopContent } from './CountryDetailsStyled';
 
 const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countryDetails, neighbors }): JSX.Element => {
     const location = useLocation()

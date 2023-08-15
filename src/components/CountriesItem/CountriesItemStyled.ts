@@ -13,6 +13,8 @@ export const ItemStyled = styled.li`
 
   @media (min-width: 1440px){
     height: 336px;
+
+    cursor: pointer;
   }
 `;
 

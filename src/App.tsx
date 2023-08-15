@@ -1,6 +1,6 @@
 import { lazy, useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Dna } from 'react-loader-spinner';
 
 import { GlobalStyles } from './styles/GlobalStyles';
@@ -40,7 +40,8 @@ function App() {
       setCountriesList(countries.data.result);
     } else if (countriesList.length === 0) {
       setCountriesList(countries.data.result);
-    } else {
+    } 
+    else {
       setCountriesList((prev) => [...prev, ...countries.data.result]);
     }
 
@@ -61,9 +62,9 @@ function App() {
     
     setCountryDetails(details.data.result)
     setNeighbors(details.data.neighbors)
-
+setCountriesList([])
     setIsLoading(false)
-  }  
+  }    
 
   return (<>
      
