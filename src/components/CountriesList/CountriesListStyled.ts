@@ -1,17 +1,35 @@
 import { Dropdown } from "react-bootstrap";
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const CommonContainer = styled.div`
   padding-top: ${(props) => props.theme.space[6]};
   padding-bottom: ${(props) => props.theme.space[14]};
 
   background-color: ${(props) => props.theme.color.bg};
+
+  @media (min-width: 1440px) {
+    padding-top: ${(props) => props.theme.space[12]};
+  }
 `;
 
 export const SearchForm = styled.form`
   margin-bottom: ${(props) => props.theme.space[8]};
   padding-right: ${(props) => props.theme.space[4]};
   padding-left: ${(props) => props.theme.space[4]};
+
+  @media (min-width: 1440px) {
+    width: ${(props) => props.theme.percentage[10]};
+
+    margin-bottom: ${(props) => props.theme.space[12]};
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -32,14 +50,26 @@ export const SearchInput = styled.input`
 
   border: none;
   border-radius: 5px;
+
+  @media (min-width: 1440px) {
+    width: 480px;
+
+    font-size: ${(props) => props.theme.size.S};
+    line-height: 1.43;
+  }
 `;
 
 export const SearchLabel = styled.label`
   position: relative;
 
-  display:block;
+  display: block;
 
-  margin-bottom: ${props => props.theme.space[11]};
+  margin-bottom: ${(props) => props.theme.space[11]};
+
+  @media (min-width: 1440px){
+    margin-bottom: 0;
+
+  }
 `;
 
 export const SearchIcon = styled.img`
@@ -52,16 +82,25 @@ export const SearchIcon = styled.img`
   transform: translateX(32px) translateY(18px);
 `;
 
-
 export const ListStyled = styled.ul`
   padding-right: ${(props) => props.theme.space[13]};
   padding-left: ${(props) => props.theme.space[13]};
 
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 75px;
+
+    padding-right: 80px;
+    padding-left: 80px;
+  }
 `;
 
 export const CountriesItem = styled.div`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[11]};
+
+    
   }
 `;
 
@@ -69,6 +108,10 @@ export const CountriesItem = styled.div`
 
 export const DropdownStyled = styled(Dropdown)`
   width: ${(props) => props.theme.percentage[7]};
+
+  @media (min-width: 1440px){
+    width: auto;
+  }
 `;
 
 export const DropdownToggleStyled = styled(Dropdown.Toggle)`
@@ -87,6 +130,12 @@ export const DropdownToggleStyled = styled(Dropdown.Toggle)`
   line-height: 1.67;
 
   border: none;
+
+  @media (min-width: 1440px) {
+    width: auto;
+
+    margin-bottom: 0;
+  }
 
   &&&:hover,
   &&&:focus,
@@ -109,11 +158,11 @@ export const DropdownMenuStyled = styled(Dropdown.Menu)`
 `;
 
 export const DropdownItemStyled = styled(Dropdown.Item)`
-font-family: ${props => props.theme.fontFamily.body};
-font-size: ${props => props.theme.size.XS};
-line-height: 1.33;
+  font-family: ${(props) => props.theme.fontFamily.body};
+  font-size: ${(props) => props.theme.size.XS};
+  line-height: 1.33;
 
-&:not(:last-child){
-    margin-bottom: ${props => props.theme.space[2]};
-}
+  &:not(:last-child) {
+    margin-bottom: ${(props) => props.theme.space[2]};
+  }
 `;

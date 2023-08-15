@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react';
+import { lazy, useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
+import { Dna } from 'react-loader-spinner';
 
 import { GlobalStyles } from './styles/GlobalStyles';
 import lightTheme from './styles/lightTheme';
@@ -9,11 +10,10 @@ import ThemeContext from './context/themeContext';
 import darkTheme from './styles/darkTheme';
 import { getAll, getCountryDetails } from './utils/services';
 import { ICountry } from './utils/interface';
-import { Dna } from 'react-loader-spinner';
-import CountriesList from './components/CountriesList/CountriesList';
-import CountryDetails from './components/CountryDetails/CountryDetails';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
 
+const CountriesList = lazy(()=>import('./components/CountriesList/CountriesList'))
+const CountryDetails = lazy(()=> import('./components/CountryDetails/CountryDetails'))
+const ErrorPage = lazy(()=>import('./pages/ErrorPage/ErrorPage'))
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [countriesList, setCountriesList] = useState<ICountry[]>([])

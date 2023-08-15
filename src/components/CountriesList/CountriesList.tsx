@@ -1,5 +1,4 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
 import { Dna } from "react-loader-spinner";
 
 import * as SC from "./CountriesListStyled"
