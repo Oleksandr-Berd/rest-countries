@@ -74,7 +74,7 @@ const darkTheme: object = {
     page: "#F2F2F2",
     errors: "#F43030",
     text: "#EAEAEB",
-    cyan: "#5FB4A2",
+    altHover: "#5FB4A2",
     dark: "#203A4C",
     border: "#979797",
     secondaryBody: "#ffffff",
