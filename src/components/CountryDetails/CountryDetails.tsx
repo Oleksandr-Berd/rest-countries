@@ -13,13 +13,25 @@ const CountryDetails: React.FC<ICountryDetails> = ({ fetchCountryDetails, countr
 
     const { pathname } = location
     
-    const { flags, name, nativeName, population, subregion, region, capital, topLevelDomain, currencies, languages, timezones } = Object.keys(countryDetails).length > 0 && countryDetails as ICountry 
+    const {
+      flags,
+      name,
+      nativeName,
+      population,
+      subregion,
+      region,
+      capital,
+      topLevelDomain,
+      currencies,
+      languages,
+      timezones,
+      latlng,
+    } = Object.keys(countryDetails).length > 0 && (countryDetails as ICountry); 
 
     const formattedPopulation = population ? population.toLocaleString() : ""
 
     const currenciesName = currencies ? currencies[0].name! : "";
     const currenciesCode = currencies ? currencies[0].code! : "";
-
 
     const isDesktop = useMediaQuery("(min-width:1440px)")
     

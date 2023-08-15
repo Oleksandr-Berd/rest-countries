@@ -1,6 +1,6 @@
 import { lazy, useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Dna } from 'react-loader-spinner';
 
 import { GlobalStyles } from './styles/GlobalStyles';
